@@ -4,7 +4,7 @@ typedef long long ll;
 
 using namespace std;
 
-// 点为1..n，容量和lim非负，要求s!=t且总流量不溢出ll。
+// 点编号可为0..n（n为最大编号），容量和lim非负，要求s!=t且总流量不溢出ll。
 // lim默认为LLONG_MAX；flow返回本轮新增流量，可在当前残量网络上重复调用。
 // 确认已完整增广后，min_cut(s)[u]表示u是否位于最小割的源点侧。
 // flow会修改网络；若要从头计算或更换源汇，需要重新建图。Dinic复杂度O(n^2m)。
@@ -65,7 +65,7 @@ struct maxflow
 	{
 		bfs(s);
 		vector<bool>vis(e.size());
-		for(int i=1;i<(int)e.size();++i)
+		for(int i=0;i<(int)e.size();++i)
 			vis[i]=d[i]!=-1;
 		return vis;
 	}

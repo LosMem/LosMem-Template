@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 最小费用最大流：costflow f(n);f.add_edge(u,v,cap,cost);auto [fl,fee]=f.flow(s,t,lim);
-点编号为1..n；add_edge加入u->v、容量为cap、单位费用为cost的有向边。
+点编号可为0..n（n为最大编号）；add_edge加入u->v、容量为cap、单位费用为cost的有向边。
 flow在当前残量网络上发送至多lim流量，返回{本次新增流量,本次最小费用}；lim默认为LLONG_MAX。
 容量和lim须非负，要求s!=t；允许负费用，但从s可达的残量网络不能有负费用环。
 flow会修改残量网络，可用相同源汇继续调用；有效最短路须小于inf，且所有数值运算均不能溢出ll。

@@ -4,7 +4,7 @@ typedef long long ll;
 
 using namespace std;
 
-// 点编号为1..n，边权为非负int，最短路长度不能溢出ll。
+// 点编号可为0..n（n为最大编号），边权为非负int，最短路长度不能溢出ll。
 // sol返回s到t的距离；调用后d[i]为s到i的最短距离，不可达为-1。
 struct dijk
 {
