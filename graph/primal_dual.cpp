@@ -10,7 +10,11 @@ using namespace std;
 flow返回本次新增的{流量,最小费用}；可用相同源汇在当前残量网络上继续调用。
 允许负费用边，但输入网络不能有负费用环；费用和所有中间计算不能溢出ll，有限最短路须小于inf。
 初始无负费用边时直接使用零势能，否则先用SPFA求势能；每轮Dijkstra后在零约化费用图上批量增广。
-每轮Dijkstra为O(n+m log m)，批量增广使用Dinic；初始SPFA无多项式最坏界，空间O(n+m)。
+设m为边数，K为成功的Dijkstra轮数，F为本次流量；整数容量下K<=F。
+初始SPFA最坏O(nm)；其余时间一般为O((K+1)(n+m log(m+1))+K n^2m)，空间O(n+m)。
+单位容量图：每轮Dinic为O((n+m) sqrt(m))；二分图单位容量匹配网络为O((n+m) sqrt(n))。
+费用全为0时K<=1，即至多一次Dinic，另有至多两次Dijkstra；lim=1时除初始SPFA外为O(n+m log(m+1))。
+普通分层图或有环图不自动得到上述特殊界。
 */
 struct primal_dual
 {
